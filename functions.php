@@ -30,6 +30,7 @@ add_action( 'wp_enqueue_scripts', 'arif_procoder_add_google_fonts' );
 
 // Theme Function
 function arif_procoder_customizar_register($wp_customize) {
+    // Header Area
     $wp_customize->add_section('arif_procoder_header_area', array(
         'title' => __('Header Area', 'WordpressLearningByProCoder'),
         'description' => 'This is header area description',
@@ -45,6 +46,25 @@ function arif_procoder_customizar_register($wp_customize) {
         'setting' => 'arif_procoder_logo',
         'section' => 'arif_procoder_header_area',
     )));
+
+    // Menu Position
+    $wp_customize->add_section('arif_procoder_menu_option', array(
+        'title' => __('Menu Position Option', 'WordpressLearningByProCoder'),
+        'description' => 'Change menu position',
+    ));
+
+    $wp_customize->add_setting('arif_procoder_menu_position', array(
+        'default' => 'left_menu',
+    ));
+
+    $wp_customize->add_control('arif_procoder_menu_position', array(
+        'label' => 'Menu Position',
+        'description' => 'Change menu position',
+        'setting' => 'arif_procoder_menu_position',
+        'section' => 'arif_procoder_menu_option',
+        'type' => 'radio',
+        'choices' => array('left_menu' => 'Left Menu', 'right_menu' => 'Right Menu', 'center_menu' => 'Center Menu'),
+    ));
 }
 
 add_action( 'customize_register', 'arif_procoder_customizar_register' );
